@@ -62,7 +62,7 @@ def main():
     sourcedir = Path('C:\\Users\\{}\\AppData\\Local\\Packages\\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\\LocalState\\Assets\\'.format(username))
     destinationdir = Path('C:\\Users\\{}\\Desktop\\new_folder'.format(username))
     checkDirectory(destinationdir)
-    os.chdir('C:\\Users\\{}\\Desktop\\new_folder'.format(username))
+    os.chdir(destinationdir)
     lastMod = 0.0
     log_file = open('log.txt', 'w')
     log_file.write('The folder selected was {}\n'.format(sourcedir))
