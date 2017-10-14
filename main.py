@@ -52,6 +52,7 @@ def convertToJPG(directory, logFile=None):
                         print("No log file was specified.\n")
                         marker = False
 
+#Verifies that the file_path exists and, if not, creates it.
 def checkDirectory(file_path):
     if not os.path.exists(file_path):
         os.makedirs(file_path)
