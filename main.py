@@ -4,10 +4,9 @@ Created on Oct 10, 2017
 
 @author: Arun
 '''
-import shutil, os
+import shutil, os, getpass, time
 from pathlib import Path
 from datetime import datetime
-import time
 
 #Returns the last modified timestamp in regards to date not hours minutes seconds as these values change from file to file despite the modified dates remaining the same
 def lastModifiedFile(sourceDirectory):
@@ -53,11 +52,17 @@ def convertToJPG(directory, logFile=None):
                         print("No log file was specified.\n")
                         marker = False
 
+def checkDirectory(file_path):
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
+        
 def main():
-    os.chdir('C:\\Users\\Arun\\Desktop\\new_folder')
+    username = getpass.getuser()
+    sourcedir = Path('C:\\Users\\{}\\AppData\\Local\\Packages\\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\\LocalState\\Assets\\'.format(username))
+    destinationdir = Path('C:\\Users\\{}\\Desktop\\new_folder'.format(username))
+    checkDirectory(destinationdir)
+    os.chdir('C:\\Users\\{}\\Desktop\\new_folder'.format(username))
     lastMod = 0.0
-    sourcedir = Path('C:\\Users\\Arun\\AppData\\Local\\Packages\\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\\LocalState\\Assets\\')
-    destinationdir = Path('C:\\Users\\Arun\\Desktop\\new_folder')
     log_file = open('log.txt', 'w')
     log_file.write('The folder selected was {}\n'.format(sourcedir))
     lastMod = lastModifiedFile(sourcedir)
