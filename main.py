@@ -8,7 +8,7 @@ import shutil, os, getpass, time
 from pathlib import Path
 from datetime import datetime
 
-#Returns the last modified timestamp in regards to date not hours minutes seconds as these values change from file to file despite the modified dates remaining the same
+#Returns the last modified timestamp in regards to date not hours/minutes/seconds as these values change from file to file despite the modified dates remaining the same
 def lastModifiedFile(sourceDirectory):
     lastMod = 0.0
     for f in os.listdir(sourceDirectory):
